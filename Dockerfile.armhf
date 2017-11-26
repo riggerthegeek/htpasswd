@@ -1,0 +1,12 @@
+FROM resin/raspberry-pi-alpine:3.6
+
+ENV USERNAME=""
+ENV PASSWORD=""
+
+RUN [ "cross-build-start" ]
+
+RUN apk add --update apache2-utils
+
+RUN [ "cross-build-end" ]
+
+CMD sh -c "htpasswd -bBc /opt/htpasswd ${USERNAME} ${PASSWORD}"
